@@ -4,7 +4,7 @@
 Share some Class templates using in 3D space implented by C++.
 
 
-在借鉴Darkziyu的Mathd项目(https://github.com/Darkziyu/Mathd)基础上，
+在借鉴Darkziyu的Mathd项目(https://github.com/Darkziyu/Mathd ) 基础上，
 对Unity类的再实现按照C++的需求部分扩展为了类模板。
 
 Implent Unity Classes to C++ Class Templates based work on Darkziyu(https://github.com/Darkziyu/Mathd).
