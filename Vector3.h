@@ -1,11 +1,17 @@
+//
+//  Vector3.h
+//  XYZ
+//  三维空间常用类模板C++实现。封装了三维空间向量的常用成员与方法。
+//
+//  Created by 杜子兮(duzixi[at]gmail[dot]com) on 18-4-7.
+//  Copyright (c) 2018年 www.duzixi.com All rights reserved.
+//
+
 #pragma once
 
 using namespace std;
 
 namespace XYZ {
-
-	// template <class T>
-	// class Vector3;
 
 	template <class T>
 	class Vector3
