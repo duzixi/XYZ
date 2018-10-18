@@ -1,10 +1,10 @@
 //
 //  Vector3.h
 //  XYZ
-//  ÈıÎ¬¿Õ¼ä³£ÓÃÀàÄ£°åC++ÊµÏÖ¡£·â×°ÁËÈıÎ¬¿Õ¼äÏòÁ¿µÄ³£ÓÃ³ÉÔ±Óë·½·¨¡£
+//  ä¸‰ç»´ç©ºé—´å¸¸ç”¨ç±»æ¨¡æ¿C++å®ç°ã€‚å°è£…äº†ä¸‰ç»´ç©ºé—´å‘é‡çš„å¸¸ç”¨æˆå‘˜ä¸æ–¹æ³•ã€‚
 //
-//  Created by ¶Å×ÓÙâ(duzixi[at]gmail[dot]com) on 18-4-7.
-//  Copyright (c) 2018Äê www.duzixi.com All rights reserved.
+//  Created by æœå­å…®(duzixi[at]gmail[dot]com) on 18-4-7.
+//  Copyright (c) 2018å¹´ www.duzixi.com All rights reserved.
 //
 
 #include "stdafx.h"
@@ -219,7 +219,7 @@ namespace XYZ {
 		return !(this == rhs)
 	}
 
-	// ÔËËã·ûÖØÔØ²¢²»ÊÇÀà³ÉÔ± ----------------------------------------
+	// è¿ç®—ç¬¦é‡è½½å¹¶ä¸æ˜¯ç±»æˆå‘˜ ----------------------------------------
 
 	template <class T>
 	Vector3<T> operator+(const Vector3<T> &a, const Vector3<T> &b) { 
