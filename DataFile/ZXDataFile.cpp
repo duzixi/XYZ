@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "ZXDataFile.h"
 
-string formats[] = {  // ¡¾×¢Òâ¡¿£º¸ÃË³ĞòÒªÓëÃ¶¾Ù¶¨ÒåÒ»ÖÂ£¬·ñÔò·µ»Ø³ö´í¡£Ìí¼ÓÀàĞÍÊ±Î»ÖÃÒªÒ»ÖÂ
-	"TXT", // x,y,z  ×Ô¼ºÔ¼¶¨µÄ£¬Èç¹û²»Ö¸¶¨£¬Ôò°´Õâ¸öÀàĞÍÊä³ö
+string formats[] = {  // ã€æ³¨æ„ã€‘ï¼šè¯¥é¡ºåºè¦ä¸æšä¸¾å®šä¹‰ä¸€è‡´ï¼Œå¦åˆ™è¿”å›å‡ºé”™ã€‚æ·»åŠ ç±»å‹æ—¶ä½ç½®è¦ä¸€è‡´
+	"TXT", // x,y,z  è‡ªå·±çº¦å®šçš„ï¼Œå¦‚æœä¸æŒ‡å®šï¼Œåˆ™æŒ‰è¿™ä¸ªç±»å‹è¾“å‡º
 	"OFF",
 	"PCD", 
 	"PLY",
@@ -21,26 +21,26 @@ ZXDataFile::~ZXDataFile(void)
 {
 }
 
-// ¡¾½Ó¿Ú¡¿Êı¾İ×ª»»
+// ã€æ¥å£ã€‘æ•°æ®è½¬æ¢
 bool ZXDataFile::Convert(char *inputFileName, DataFormat outFormat)
 {
 
-	// STEP 0 ÊäÈëÊä³öÎÄ¼şÃû¼°¸ñÊ½
+	// STEP 0 è¾“å…¥è¾“å‡ºæ–‡ä»¶ååŠæ ¼å¼
 	DataFormat inFormat = GetFormatByFileName(inputFileName);
 	string inSeperator = inFormat == F_TXT ? "," : " ";
 
 	stringstream ss;
 	ss << inputFileName << "." << formats[outFormat];
 
-	// STEP 1 Í¬Ê±´ò¿ªÊäÈëÊä³öÎÄ¼ş
-	ifstream ifile; // ÊäÈëÎÄ¼ş
+	// STEP 1 åŒæ—¶æ‰“å¼€è¾“å…¥è¾“å‡ºæ–‡ä»¶
+	ifstream ifile; // è¾“å…¥æ–‡ä»¶
 	ifile.open(inputFileName, ios::in);
 	if (!ifile.is_open())
 	{
-		cout << "Error: ´ò¿ªÊäÈëÎÄ¼ş " << inputFileName << "´íÎó" << endl; 
+		cout << "Error: æ‰“å¼€è¾“å…¥æ–‡ä»¶ " << inputFileName << "é”™è¯¯" << endl; 
 		return false;
 	}
-	// ÒÔÏÂÏÈ¿¼ÂÇTXT -> XYZ¡¾Î´Íê´ıĞø¡¿
+	// ä»¥ä¸‹å…ˆè€ƒè™‘TXT -> XYZã€æœªå®Œå¾…ç»­ã€‘
 	int iX, iY, iZ;
 	switch (inFormat)
 	{
@@ -71,25 +71,25 @@ bool ZXDataFile::Convert(char *inputFileName, DataFormat outFormat)
 	ofile.open(ss.str().c_str(), ios::out);
 	if (!ofile.is_open())
 	{
-		cout << "Error£º´ò¿ªÊä³öÎÄ¼ş " << ss << " ´íÎó" << endl;
+		cout << "Errorï¼šæ‰“å¼€è¾“å‡ºæ–‡ä»¶ " << ss << " é”™è¯¯" << endl;
 		return false;
 	}
 	string outSeperator = outFormat == F_TXT ? "," : " ";
 
-	// STEP 2 ¿ªÊ¼¶ÁÒ»ĞĞĞ´Ò»ĞĞµÄÑ­»·
-	int lineNum = 0;  // ÎÄ¼ş×ÜĞĞÊı
+	// STEP 2 å¼€å§‹è¯»ä¸€è¡Œå†™ä¸€è¡Œçš„å¾ªç¯
+	int lineNum = 0;  // æ–‡ä»¶æ€»è¡Œæ•°
 	char buffer[256];
 	while (!ifile.eof())
 	{
 		if (lineNum % 10000 == 0)
 		{
-			cout << lineNum << endl;  // Ã¿1ÍòµãÊä³öÒ»ÏÂ½ø¶È
+			cout << lineNum << endl;  // æ¯1ä¸‡ç‚¹è¾“å‡ºä¸€ä¸‹è¿›åº¦
 		}
-		// STEP 2.1 ÏÈ¶Á -------------------------------
+		// STEP 2.1 å…ˆè¯» -------------------------------
 
-		// ÎÄ¼şÍ·µÄ½âÎöÓë´¦Àí¡¾Î´Íê´ıĞø¡¿
+		// æ–‡ä»¶å¤´çš„è§£æä¸å¤„ç†ã€æœªå®Œå¾…ç»­ã€‘
 
-		// ÏÈ¶Á½øÀ´,°´·Ö¸ô·ûÇĞ¸î
+		// å…ˆè¯»è¿›æ¥,æŒ‰åˆ†éš”ç¬¦åˆ‡å‰²
 		ifile.getline(buffer, 256);
 		string line = string(buffer);
 		vector<string> numStr = ZXTool::split(line, inSeperator);
@@ -100,11 +100,11 @@ bool ZXDataFile::Convert(char *inputFileName, DataFormat outFormat)
 			float y = atof(numStr[iY].c_str());
 			float z = atof(numStr[iZ].c_str());
 
-			// STEP 2.2 ÔÙĞ´ -------------------------------
+			// STEP 2.2 å†å†™ -------------------------------
 
-			// ÎÄ¼şÍ·µÄÉú³ÉÓë´¦Àí¡¾Î´Íê´ıĞø¡¿
+			// æ–‡ä»¶å¤´çš„ç”Ÿæˆä¸å¤„ç†ã€æœªå®Œå¾…ç»­ã€‘
 
-			// Ğ´ÈëÊı¾İ
+			// å†™å…¥æ•°æ®
 			if (outFormat == F_STL)
 			{
 				ofile << "vertex ";
@@ -118,17 +118,17 @@ bool ZXDataFile::Convert(char *inputFileName, DataFormat outFormat)
 		}
 	}
 
-	// Ğ´ÈëÆäËüÊı¾İ...... Õâ¸öÔõÃ´¸ã ÏßºÍÃæ»¹µÃÉú³É£¿£¿£¿
+	// å†™å…¥å…¶å®ƒæ•°æ®...... è¿™ä¸ªæ€ä¹ˆæ çº¿å’Œé¢è¿˜å¾—ç”Ÿæˆï¼Ÿï¼Ÿï¼Ÿ
 
-	// STEP 3 ¹Ø±ÕÎÄ¼ş
+	// STEP 3 å…³é—­æ–‡ä»¶
 	ifile.close();
 	ofile.close();
 
-	return true; // ×ª»»³É¹¦
+	return true; // è½¬æ¢æˆåŠŸ
 }
 
 
-// ¸ù¾İÎÄ¼şÀ©Õ¹Ãû£¬ÅĞ¶ÏÎÄ¼şÀàĞÍ
+// æ ¹æ®æ–‡ä»¶æ‰©å±•åï¼Œåˆ¤æ–­æ–‡ä»¶ç±»å‹
 DataFormat ZXDataFile::GetFormatByFileName(char *fileName)
 {
 
