@@ -1,10 +1,10 @@
 //
 //  Vector3.h
 //  XYZ
-//  ÈıÎ¬¿Õ¼ä³£ÓÃÀàÄ£°åC++ÊµÏÖ¡£·â×°ÁËÈıÎ¬¿Õ¼äÏòÁ¿µÄ³£ÓÃ³ÉÔ±Óë·½·¨¡£
+//  ä¸‰ç»´ç©ºé—´å¸¸ç”¨ç±»æ¨¡æ¿C++å®ç°ã€‚å°è£…äº†ä¸‰ç»´ç©ºé—´å‘é‡çš„å¸¸ç”¨æˆå‘˜ä¸æ–¹æ³•ã€‚
 //
-//  Created by ¶Å×ÓÙâ(duzixi[at]gmail[dot]com) on 18-4-7.
-//  Copyright (c) 2018Äê www.duzixi.com All rights reserved.
+//  Created by æœå­å…®(duzixi[at]gmail[dot]com) on 18-4-7.
+//  Copyright (c) 2018å¹´ www.duzixi.com All rights reserved.
 //
 
 #pragma once
@@ -20,20 +20,20 @@ namespace XYZ {
 		T x;
 		T y;
 		T z;
-		// ¹¹Ôìº¯Êı ==============================
+		// æ„é€ å‡½æ•° ==============================
 		Vector3();
 		Vector3(T _x, T _y);
 		Vector3(T _x, T _y, T _z);
-		// Îö¹¹º¯Êı
+		// ææ„å‡½æ•°
 		~Vector3();
 
-		// ÊôĞÔ====================================
-		// ³£ÓÃÏòÁ¿
-		/* ±¾Àà²ÉÓÃ×ø±êÏµÈçÏÂ£º
+		// å±æ€§====================================
+		// å¸¸ç”¨å‘é‡
+		/* æœ¬ç±»é‡‡ç”¨åæ ‡ç³»å¦‚ä¸‹ï¼š
 		y
 		^
 		|
-		|   ¸©ÊÓÍ¼        zÖá´¹Ö±ÆÁÄ»³¯ÉÏ
+		|   ä¿¯è§†å›¾        zè½´å‚ç›´å±å¹•æœä¸Š
 		|
 		o-----------> x
 		*/
@@ -56,65 +56,65 @@ namespace XYZ {
 		// (0, 0, 0)
 		static Vector3<T> zero;
 
-		// Ä£µÄÆ½·½
+		// æ¨¡çš„å¹³æ–¹
 		T sqrMagnitude;
 
-		// Ä£
+		// æ¨¡
 		T magnitude;
 
-		// Àà·½·¨ ===============================
+		// ç±»æ–¹æ³• ===============================
 
-		// µã³Ë
+		// ç‚¹ä¹˜
 		static T Dot(Vector3<T> lhs, Vector3<T> rhs);
-		// ²æ³Ë
+		// å‰ä¹˜
 		static Vector3<T> Cross(Vector3<T> lhs, Vector3<T> rhs);
-		// ¾àÀë
+		// è·ç¦»
 		static T Distance(Vector3<T> a, Vector3<T> b);
-		// µ¥Î»»¯
+		// å•ä½åŒ–
 		static Vector3<T> Normalize(Vector3<T> value);
 
-		// ¼Ğ½Ç´óĞ¡£¨½Ç¶È£©
+		// å¤¹è§’å¤§å°ï¼ˆè§’åº¦ï¼‰
 		static T Angle(Vector3<T> from, Vector3<T> to);
-		// ¼Ğ½Ç´óĞ¡£¨»¡¶È£©
+		// å¤¹è§’å¤§å°ï¼ˆå¼§åº¦ï¼‰
 		static T AngleBetween(Vector3<T> from, Vector3<T> to);
 
-		// ×î´óÖµ(X,Y,Z¾ùÈ¡×î´ó)
+		// æœ€å¤§å€¼(X,Y,Zå‡å–æœ€å¤§)
 		static Vector3<T> Max(Vector3<T> lhs, Vector3<T> rhs);
 
-		// ×îĞ¡Öµ(X,Y,Z¾ùÈ¡×îĞ¡)
+		// æœ€å°å€¼(X,Y,Zå‡å–æœ€å°)
 		static Vector3<T> Min(Vector3<T> lhs, Vector3<T> rhs);
 
-		// ÏòÁ¿Í¶Ó°
+		// å‘é‡æŠ•å½±
 		static Vector3<T> Project(Vector3<T> vector, Vector3<T> onNormal);
 
-		// Ëõ·Å
+		// ç¼©æ”¾
 		static Vector3<T> Scale(Vector3<T> a, Vector3<T> b);
 
-		// ³ÉÔ±·½·¨ ==============================
+		// æˆå‘˜æ–¹æ³• ==============================
 
-		// µ¥Î»»¯£¨²»¸Ä±äÏòÁ¿±¾Éí£©
+		// å•ä½åŒ–ï¼ˆä¸æ”¹å˜å‘é‡æœ¬èº«ï¼‰
 		Vector3<T> normalized();
 
-		// Ëõ·Å
+		// ç¼©æ”¾
 		void Scale(Vector3<T> scale);
 
-		// ÉèÖÃ
+		// è®¾ç½®
 		void Set(T _x, T _y, T _z);
 
-		// ·µ»Ø×Ö·û´®
+		// è¿”å›å­—ç¬¦ä¸²
 		string ToString();
 
 
-		// ÔËËã·ûÖØÔØ ==========================
+		// è¿ç®—ç¬¦é‡è½½ ==========================
 
-		// ±È½ÏÊÇ·ñÏàµÈ
+		// æ¯”è¾ƒæ˜¯å¦ç›¸ç­‰
 		bool operator==(const Vector3<T> &rhs) const;
-		// ±È½ÏÊÇ·ñ²»ÏàµÈ
+		// æ¯”è¾ƒæ˜¯å¦ä¸ç›¸ç­‰
 		bool operator!=(const Vector3<T> &rhs) const;
 
 	};
 
-	// ÔËËã·ûÖØÔØ
+	// è¿ç®—ç¬¦é‡è½½
 
 	template <class T>
 	Vector3<T> operator+(const Vector3<T> &a, const Vector3<T> &b);
